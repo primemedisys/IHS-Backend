@@ -1,0 +1,24 @@
+node_modules
+token*.txt
+srv.err
+srv.log
+*.log
+node_modules/
+.env
+.env.*
+!.env.example
+uploads/
+.env
+# Patient/provider uploads (prescriptions, reports, images) are private data, never source.
+# (Was "backend/uploads/", which never matched from inside backend/.)
+/uploads/
+# Cloudinary migration inventories/mappings and the failed-delete queue
+# reference patient files — operational data, never source (CLOUDINARY_SETUP.md).
+/storage-migration/
+/storage-cleanup.jsonl
+
+# Every local env variant — only the templates are committed
+.env.*
+!.env.example
+!.env.test.example
+coverage/

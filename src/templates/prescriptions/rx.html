@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--
+      The prescription letterhead. Every themeable value arrives as a CSS custom
+      property so the layout never hard-codes a colour — the doctor's template
+      sets them, and frontend-doctor's RxPreview.tsx uses the SAME variable names
+      so a theme change is one edit in two places instead of a hunt.
+
+      __STYLE_VARS__ and __CONTENT__ are substituted by prescriptionPdf.service.js.
+      Every interpolated string is escaped there before it reaches this file.
+    -->
+    <style>
+      :root {
+        __STYLE_VARS__
+      }
+
+      @page { size: var(--page-size); margin: 0; }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        font-size: var(--base);
+        color: #111;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        min-height: 297mm;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      /* ── ① header ──────────────────────────────────────────────────────── */
+      .rx-header {
+        background: var(--header-bg);
+        color: var(--header-text);
+        padding: 6mm var(--pad-x);
+        display: flex;
+        align-items: flex-start;
+        gap: 8mm;
+      }
+      .rx-header.logo-left { flex-direction: row-reverse; }
+      .rx-header__text { flex: 1; min-width: 0; }
+      .rx-header__brand { text-align: center; flex-shrink: 0; max-width: 45mm; }
+      .rx-header__brand img { max-width: 28mm; max-height: 22mm; display: block; margin: 0 auto 1mm; }
+      .clinic-name { font-weight: 800; font-size: 1.15em; letter-spacing: .4px; }
+      .clinic-tagline { font-size: .72em; letter-spacing: .2px; }
+      .doctor-name { font-weight: 800; font-size: 1.65em; line-height: 1.1; letter-spacing: .3px; }
+      .credentials { margin: 1mm 0 0; padding: 0; list-style: none; }
+      .credentials li { font-size: .82em; line-height: 1.35; font-weight: 600; }
+      .credentials li.dim { font-weight: 400; }
+      .reg-no { margin-top: 1.2mm; font-size: .82em; font-weight: 600; }
+
+      /* ── ② patient strip ───────────────────────────────────────────────── */
+      .patient-strip { padding: 3mm var(--pad-x); border-bottom: 1.2px solid var(--accent); }
+      .patient-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6mm; margin-bottom: 2mm; }
+      .patient-row:last-child { margin-bottom: 0; }
+      .field { display: flex; align-items: baseline; gap: 1.5mm; flex: 0 1 auto; }
+      .field--grow { flex: 1 1 40mm; }
+      .field__label { font-size: .82em; color: #333; white-space: nowrap; }
+      .field__value {
+        border-bottom: 1px dotted #666;
+        min-width: 18mm;
+        flex: 1;
+        font-size: .9em;
+        font-weight: 600;
+        min-height: 1.15em;
+        padding: 0 1mm;
+      }
+
+      /* ── ③ + ④ body ────────────────────────────────────────────────────── */
+      .main { flex: 1; display: flex; position: relative; align-items: stretch; }
+
+      .watermark {
+        position: absolute;
+        inset: 0;
+        background-image: var(--watermark);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 55%;
+        opacity: var(--wm-opacity);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .sidebar {
+        width: var(--sidebar-width);
+        flex-shrink: 0;
+        border-right: 1.2px solid var(--accent);
+        padding: 3mm 2.5mm 3mm var(--pad-x);
+        position: relative;
+        z-index: 1;
+        break-inside: avoid;
+      }
+      .sidebar__title { font-weight: 700; font-size: .95em; margin-bottom: 1.5mm; }
+      .sidebar__group-title { font-weight: 600; font-size: .78em; margin: 2mm 0 1mm; color: #444; }
+      .sidebar ul { margin: 0; padding: 0; list-style: none; }
+      .sidebar li { font-size: .74em; line-height: 1.55; display: flex; gap: 1.2mm; }
+      .sidebar li .mark { width: 3mm; flex-shrink: 0; }
+      .sidebar li.ticked { font-weight: 700; }
+
+      .rx-body { flex: 1; padding: 3mm var(--pad-x) 3mm 4mm; position: relative; z-index: 1; min-width: 0; }
+      .rx-body__top { display: flex; justify-content: flex-end; margin-bottom: 2mm; }
+      .rx-meta { font-size: .82em; text-align: right; line-height: 1.5; }
+
+      .section { margin-bottom: 3.5mm; break-inside: avoid; }
+      .section__label { font-size: .72em; text-transform: uppercase; letter-spacing: .6px; color: #666; margin-bottom: .8mm; }
+      .section__value { font-size: .92em; white-space: pre-wrap; }
+
+      .vitals { display: flex; flex-wrap: wrap; gap: 1mm 5mm; font-size: .84em; }
+      .vitals span b { font-weight: 700; }
+
+      .rx-symbol { font-size: 1.7em; font-weight: 700; font-family: Georgia, serif; line-height: 1; margin-bottom: 1mm; }
+
+      table.meds { width: 100%; border-collapse: collapse; font-size: .84em; }
+      table.meds thead { display: table-header-group; }
+      table.meds th {
+        text-align: left;
+        border-bottom: 1.2px solid var(--accent);
+        padding: 1.2mm 1.5mm;
+        font-size: .82em;
+        text-transform: uppercase;
+        letter-spacing: .4px;
+        color: #444;
+      }
+      table.meds td { padding: 1.4mm 1.5mm; border-bottom: 1px solid #e2e2e2; vertical-align: top; }
+      table.meds tr { break-inside: avoid; }
+      table.meds td.name { font-weight: 600; }
+      .meds-empty { font-size: .85em; color: #888; font-style: italic; padding: 2mm 0; }
+
+      .signature { margin-top: 8mm; text-align: right; break-inside: avoid; }
+      .signature img { max-height: 16mm; max-width: 45mm; display: inline-block; }
+      .signature__rule { border-top: 1px solid #333; width: 45mm; margin-left: auto; margin-top: 1mm; padding-top: 1mm; }
+      .signature__name { font-size: .8em; font-weight: 600; }
+
+      .disclaimer { margin-top: 4mm; font-size: .68em; color: #777; font-style: italic; }
+
+      /* ── ⑥ footer ──────────────────────────────────────────────────────── */
+      .rx-footer {
+        background: var(--footer-bg);
+        color: var(--footer-text);
+        padding: 3.5mm var(--pad-x);
+        display: flex;
+        gap: 6mm;
+        margin-top: auto;
+      }
+      .rx-footer__col { flex: 1; text-align: center; min-width: 0; }
+      .rx-footer__title { font-weight: 700; font-size: .8em; margin-bottom: .8mm; }
+      .rx-footer__line { font-size: .74em; line-height: 1.45; word-break: break-word; }
+    </style>
+  </head>
+  <body>
+    __CONTENT__
+  </body>
+</html>

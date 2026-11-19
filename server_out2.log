@@ -1,0 +1,274 @@
+﻿[sql] Executing (default): SELECT 1+1 AS result
+Γ£à Database connection established
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `users`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `refresh_tokens`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'password_reset_tokens' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `password_reset_tokens`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_profiles' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_profiles`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'patient_profiles' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `patient_profiles`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'specializations' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `specializations`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'languages' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `languages`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_specializations' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_specializations`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_languages' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_languages`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_awards' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_awards`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_links' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_links`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_documents' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_documents`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_search_keywords' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_search_keywords`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_education' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_education`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_experience' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_experience`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_services' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_services`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_publications' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_publications`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_memberships' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_memberships`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_gallery' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_gallery`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_faqs' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_faqs`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'insurances' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `insurances`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_insurances' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_insurances`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'clinic_profiles' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `clinic_profiles`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'clinic_documents' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `clinic_documents`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'clinics' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `clinics`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'clinic_availability' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `clinic_availability`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_online_availability' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_online_availability`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'availability_exceptions' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `availability_exceptions`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'care_journeys' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `care_journeys`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'consultation_sessions' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `consultation_sessions`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'bookings' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `bookings`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'payments' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `payments`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'video_sessions' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `video_sessions`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'referrals' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `referrals`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'prescription_templates' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `prescription_templates`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'prescriptions' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `prescriptions`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'prescription_items' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `prescription_items`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'clinical_notes' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `clinical_notes`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'allergies' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `allergies`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'conditions' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `conditions`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'patient_allergies' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `patient_allergies`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'patient_conditions' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `patient_conditions`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'patient_current_medications' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `patient_current_medications`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'uploaded_records' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `uploaded_records`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'doctor_patient_statuses' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `doctor_patient_statuses`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'follow_up_statuses' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `follow_up_statuses`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'patient_follow_ups' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `patient_follow_ups`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'patient_vitals' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `patient_vitals`
+[sql] Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'ihssss'
+[sql] Executing (default): SHOW INDEX FROM `contact_messages`
+[sql] Executing (default): SELECT COUNT(*) AS q FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+         AND column_name = 'queue_number'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+         AND column_name = 'active_lock_key'
+[sql] Executing (default): CREATE TABLE IF NOT EXISTS rx_counters (
+      doctor_id BIGINT UNSIGNED NOT NULL,
+      year      SMALLINT UNSIGNED NOT NULL,
+      next_val  INT UNSIGNED NOT NULL DEFAULT 1,
+      PRIMARY KEY (doctor_id, year)
+    ) ENGINE=InnoDB
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+           AND column_name = 'blood_pressure'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+           AND column_name = 'pulse_rate_bpm'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+           AND column_name = 'weight_kg'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+           AND column_name = 'height_cm'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+           AND column_name = 'temperature_f'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+           AND column_name = 'spo2_percent'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+           AND column_name = 'emergency_contact_name'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+           AND column_name = 'emergency_contact_phone'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+           AND column_name = 'no_known_allergies'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+           AND column_name = 'no_known_conditions'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'bookings'
+           AND column_name = 'journey_id'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'bookings'
+           AND column_name = 'referral_id'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_vitals'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'patient_vitals'
+           AND column_name = 'location'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'doctor_profiles'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'doctor_profiles'
+           AND column_name = 'showcase_image_url'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'doctor_profiles'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'doctor_profiles'
+           AND column_name = 'is_listed'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'prescription_items'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'prescription_items'
+           AND column_name = 'duration_unit'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'bookings' AND column_name = 'rescheduled_at'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+         WHERE table_schema = DATABASE() AND table_name = 'bookings' AND column_name = 'rescheduled_reason'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type FROM information_schema.COLUMNS
+       WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'users' AND COLUMN_NAME = 'role'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_vitals'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'patient_vitals' AND column_name = 'source'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'patient_vitals' AND column_name = 'recorded_by_user_id'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'clinical_notes' AND column_name = 'doctor_id'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'uploaded_records'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'uploaded_records' AND column_name = 'source'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_allergies'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'patient_allergies' AND column_name = 'source'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_conditions'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'patient_conditions' AND column_name = 'source'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+[sql] Executing (default): SELECT COLUMN_TYPE AS type, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'clinical_notes' AND column_name = 'source'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'clinical_notes'
+[sql] Executing (default): UPDATE clinical_notes SET recorded_by_user_id = doctor_id, source = 'doctor'
+         WHERE recorded_by_user_id IS NULL AND doctor_id IS NOT NULL
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+         AND column_name = 'booked_by_user_id'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'patient_profiles'
+         AND column_name = 'no_current_medications'
+[sql] Executing (default): SELECT COLUMN_TYPE AS t FROM information_schema.COLUMNS
+       WHERE table_schema = DATABASE() AND table_name = 'uploaded_records'
+         AND column_name = 'file_type'
+[sql] Executing (default): SELECT COUNT(*) AS c FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'uploaded_records'
+         AND column_name = 'location'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'doctor_patient_statuses'
+[sql] Executing (default): SELECT COLUMN_TYPE AS t FROM information_schema.COLUMNS
+       WHERE table_schema = DATABASE() AND table_name = 'uploaded_records'
+         AND column_name = 'source'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_follow_ups'
+[sql] Executing (default): SELECT COLUMN_DEFAULT AS def, IS_NULLABLE AS nullable FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'patient_follow_ups'
+         AND column_name = 'updated_at'
+[sql] Executing (default): SELECT COUNT(*) AS t FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'patient_follow_ups'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.STATISTICS
+       WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'patient_follow_ups'
+         AND INDEX_NAME = 'PRIMARY' AND COLUMN_NAME = 'booking_id'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'consultation_sessions'
+[sql] Executing (default): SELECT COLUMN_DEFAULT AS def FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'consultation_sessions'
+         AND column_name = 'created_at'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'consultation_sessions'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'consultation_sessions' AND column_name = 'clinic_key'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'clinic_availability'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'clinic_availability' AND column_name = 'max_bookings'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'doctor_online_availability'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'doctor_online_availability' AND column_name = 'max_bookings'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.tables
+       WHERE table_schema = DATABASE() AND table_name = 'bookings'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.STATISTICS
+       WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'bookings' AND INDEX_NAME = 'uq_booking_session_token'
+[sql] Executing (default): SELECT COUNT(*) AS n FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = 'bookings' AND column_name = 'queue_number'
+≡ƒöä Models synced (development)
+[sql] Executing (default): SELECT `id`, `role`, `name`, `email`, `phone`, `password_hash` AS `passwordHash`, `auth_provider` AS `authProvider`, `google_id` AS `googleId`, `profile_photo_url` AS `profilePhotoUrl`, `is_active` AS `isActive`, `is_email_verified` AS `isEmailVerified`, `is_phone_verified` AS `isPhoneVerified`, `created_at` AS `createdAt`, `updated_at` AS `updatedAt`, `password_hash` AS `passwordHash` FROM `users` AS `User` WHERE `User`.`email` = 'admin@indiahealthsystem.com';
+[sql] Executing (default): SELECT `name` FROM `specializations` AS `Specialization`;
+[sql] Executing (default): SELECT `name` FROM `languages` AS `Language`;
+[sql] Executing (default): SELECT `name` FROM `allergies` AS `Allergy`;
+[sql] Executing (default): SELECT `name` FROM `conditions` AS `Condition`;
+≡ƒÜÇ API listening on http://localhost:5000/api
+[0mGET /api/admin/registry/patients [33m401[0m 4.221 ms - 90[0m
