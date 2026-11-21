@@ -1,0 +1,33 @@
+# Build context hygiene — keep secrets, patient data, logs and host binaries out
+# of the image. Everything the runtime needs is copied explicitly in the Dockerfile.
+
+.git
+.gitignore
+
+node_modules
+npm-debug.log*
+
+# Secrets / local env — pass configuration at runtime instead
+.env
+.env.*
+!.env.example
+
+# Patient/provider uploads and migration artefacts are private data, never source
+uploads
+storage-migration
+storage-cleanup.jsonl
+
+# Logs
+*.log
+srv.err
+srv.log
+
+# Not needed at runtime
+test
+docs
+coverage
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml
