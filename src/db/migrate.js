@@ -1,87 +1,150 @@
 /**
- * Minimal forward-only SQL migration runner. `npm run migrate` applies, in order:
- *   1. the canonical base schema  (docs/dbstruct.md)  → tracked as "000_base_schema"
- *   2. every *.sql in this folder  (src/db/migrations) → tracked by filename
+ * Forward-only MySQL migration runner.
  *
- * Applied migrations are recorded in a `_migrations` table, so re-running is a
- * no-op — safe to run on every deploy. We keep the base schema as the single
- * source of truth (no duplicate copy) by reading it straight from docs/.
+ * Migration order:
+ *   1. 000_base_schema.sql  — complete foundational schema
+ *   2. every remaining *.sql file in src/db/migrations, sorted by filename
+ *
+ * Applied migrations are recorded in _migrations. Re-running the command
+ * skips completed migrations. The base schema is a normal migration file;
+ * no external docs/ path is required.
+ *
+ * IMPORTANT:
+ * - Provision DB_NAME before running this script.
+ * - The configured DB_USER needs privileges on DB_NAME to create/alter tables.
+ * - MySQL DDL is not fully transactional. The base SQL uses IF NOT EXISTS and
+ *   idempotent seed inserts so a partially completed base migration can retry.
  */
+
 const fs = require("fs");
 const path = require("path");
 const mysql = require("mysql2/promise");
 const env = require("../config/env");
 
 const MIGRATIONS_DIR = path.join(__dirname, "migrations");
-const BASE_SCHEMA = path.resolve(__dirname, "..", "..", "..", "docs", "dbstruct.md");
+const BASE_MIGRATION = "000_base_schema.sql";
+const BASELINE_COVERS_THROUGH = 60;
 
-/** Pull the SQL out of docs/dbstruct.md (strip a ```sql fence if present). */
-function readBaseSchema() {
-  if (!fs.existsSync(BASE_SCHEMA)) return null;
-  let sql = fs.readFileSync(BASE_SCHEMA, "utf8");
-  const fence = sql.match(/```sql\s*([\s\S]*?)```/i);
-  if (fence) sql = fence[1];
-  return sql;
-}
-
-/** Ordered list of { id, sql } to apply. */
 function collectMigrations() {
-  const list = [];
-
-  const base = readBaseSchema();
-  if (base) list.push({ id: "000_base_schema", sql: base });
+  if (!fs.existsSync(MIGRATIONS_DIR)) {
+    throw new Error(`Migrations directory not found: ${MIGRATIONS_DIR}`);
+  }
 
   const files = fs
     .readdirSync(MIGRATIONS_DIR)
-    .filter((f) => f.endsWith(".sql"))
-    .sort();
-  for (const file of files) {
-    list.push({ id: file, sql: fs.readFileSync(path.join(MIGRATIONS_DIR, file), "utf8") });
+    .filter((file) => file.toLowerCase().endsWith(".sql"))
+    .sort((a, b) => a.localeCompare(b, "en"));
+
+  if (!files.includes(BASE_MIGRATION)) {
+    throw new Error(
+      `Required base schema is missing: ${path.join(MIGRATIONS_DIR, BASE_MIGRATION)}`
+    );
   }
-  return list;
+
+  if (files[0] !== BASE_MIGRATION) {
+    throw new Error(
+      `${BASE_MIGRATION} must sort before all other SQL migrations. ` +
+      `Found first migration: ${files[0] || "(none)"}`
+    );
+  }
+
+  return files.map((file) => ({
+    id: file,
+    sql: fs.readFileSync(path.join(MIGRATIONS_DIR, file), "utf8"),
+  }));
 }
 
 async function run() {
-  // Connect WITHOUT a database (the base schema creates it) and allow the
-  // multi-statement .sql files to run as a single query each.
+  if (!env.DB_HOST || !env.DB_NAME || !env.DB_USER) {
+    throw new Error("DB_HOST, DB_NAME and DB_USER must be configured.");
+  }
+
+  // Connect directly to the already-provisioned application database.
+  // This avoids requiring the application user to have global CREATE DATABASE
+  // privileges (the Docker MYSQL_DATABASE setting creates it for us).
   const conn = await mysql.createConnection({
     host: env.DB_HOST,
-    port: env.DB_PORT,
+    port: Number(env.DB_PORT || 3306),
+    database: env.DB_NAME,
     user: env.DB_USER,
     password: env.DB_PASSWORD,
     multipleStatements: true,
   });
 
   try {
-    await conn.query(
-      `CREATE DATABASE IF NOT EXISTS \`${env.DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`
-    );
-    await conn.query(`USE \`${env.DB_NAME}\``);
-    await conn.query(
-      `CREATE TABLE IF NOT EXISTS _migrations (
-         id          VARCHAR(255) PRIMARY KEY,
-         applied_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-       ) ENGINE=InnoDB`
-    );
+    await conn.query(`
+      CREATE TABLE IF NOT EXISTS _migrations (
+        id VARCHAR(255) PRIMARY KEY,
+        applied_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+      ) ENGINE=InnoDB
+    `);
 
     const [rows] = await conn.query("SELECT id FROM _migrations");
-    const applied = new Set(rows.map((r) => r.id));
+    const applied = new Set(rows.map((row) => row.id));
 
     let ran = 0;
-    for (const m of collectMigrations()) {
-      if (applied.has(m.id)) {
-        console.log(`↩︎  skip   ${m.id} (already applied)`);
-        continue;
-      }
-      console.log(`▶︎  apply  ${m.id}`);
-      await conn.query(m.sql);
-      // Re-select the working DB in case a migration issued its own USE.
-      await conn.query(`USE \`${env.DB_NAME}\``);
-      await conn.query("INSERT INTO _migrations (id) VALUES (?)", [m.id]);
-      ran += 1;
+
+  // The baseline already contains all schema changes through migration 060.
+  let baselineApplied = applied.has(BASE_MIGRATION);
+
+  for (const migration of collectMigrations()) {
+    // Skip the baseline if it has already been executed.
+    if (applied.has(migration.id)) {
+      console.log(`↩︎  skip   ${migration.id} (already applied)`);
+      continue;
     }
 
-    console.log(ran ? `✅ Applied ${ran} migration(s)` : "✅ Up to date — nothing to apply");
+    // Skip historical migrations already included in the baseline.
+    const match = migration.id.match(/^(\d{3})_/);
+    const migrationNumber = match ? Number(match[1]) : null;
+
+    if (
+      baselineApplied &&
+      migrationNumber !== null &&
+      migrationNumber <= BASELINE_COVERS_THROUGH
+    ) {
+      console.log(
+        `↩︎  skip   ${migration.id} (covered by ${BASE_MIGRATION})`
+      );
+      continue;
+    }
+
+    console.log(`▶︎  apply  ${migration.id}`);
+
+    await conn.query(migration.sql);
+
+    // Verify that the baseline created the users table.
+    if (migration.id === BASE_MIGRATION) {
+      const [[result]] = await conn.query(`
+        SELECT COUNT(*) AS table_count
+        FROM information_schema.tables
+        WHERE table_schema = DATABASE()
+          AND table_name = 'users'
+      `);
+
+      if (Number(result.table_count) !== 1) {
+        throw new Error(
+          `${BASE_MIGRATION} completed without creating the users table.`
+        );
+      }
+
+      baselineApplied = true;
+    }
+
+    await conn.query(
+      "INSERT INTO _migrations (id) VALUES (?)",
+      [migration.id]
+    );
+
+    applied.add(migration.id);
+    ran += 1;
+  }
+
+    console.log(
+      ran
+        ? `✅ Applied ${ran} migration(s)`
+        : "✅ Up to date — nothing to apply"
+    );
   } finally {
     await conn.end();
   }
@@ -89,5 +152,5 @@ async function run() {
 
 run().catch((err) => {
   console.error("❌ Migration failed:", err.message);
-  process.exit(1);
+  process.exitCode = 1;
 });

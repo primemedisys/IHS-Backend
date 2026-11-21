@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Backend — Doctor–Patient Consultation Platform
 
 Node.js + Express 5 + Sequelize 6 + MySQL (CommonJS). Conventions are enforced
@@ -102,7 +101,3 @@ existing files and rollback: [`../CLOUDINARY_SETUP.md`](../CLOUDINARY_SETUP.md).
 Base: `/api/auth`. Public: `register`, `login`, `google`, `admin/login`, `refresh`,
 `forgot-password`, `reset-password`. Authenticated (Bearer access token): `me`,
 `profile` (PATCH), `change-password`, `logout`. See `docs/auth/` for the full design.
-=======
-# IHS-Backend
-IHS-Backend
->>>>>>> origin/main
